@@ -15,6 +15,9 @@ Search all GSS variables available here: https://gssdataexplorer.norc.org/variab
 * GSS data will limit timeframe because sentiment data was not collected in all years.
 
 
+Measures of trade openness from the World Bank: https://data.worldbank.org/country/united-states and https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS?end=2018&locations=US&start=1970&view=chart
+
+
 ## Literature
 
 
