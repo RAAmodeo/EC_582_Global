@@ -18,6 +18,8 @@ Search all GSS variables available here: https://gssdataexplorer.norc.org/variab
 Measures of trade openness from the World Bank: https://data.worldbank.org/country/united-states and https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS?end=2018&locations=US&start=1970&view=chart
 
 
+Can I figure out a simple way to get this sentiment data in a processable form? https://www.pollingreport.com/trade.htm
+
 ## Literature
 
 
