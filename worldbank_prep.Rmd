@@ -1,0 +1,70 @@
+---
+title: "worldbank_dataprep"
+author: "Rebecca Amodeo"
+date: "3/13/2020"
+output:
+  word_document: default
+  html_document: default
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##  World Bank Data
+
+Clean World Bank data for measures of USA trade openness over time.
+
+Raw data downloaded from: <https://data.worldbank.org/country/united-states>.
+
+and: <https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS?end=2018&locations=US&start=1970&view=chart>.
+
+
+Trade as % of GDP Data Source: World Development Indicators
+
+Last Updated Date:	2/27/2020
+
+First load packages and raw data then limit data to USA trade openness 1970 - 2018.
+```{r Load Packages, include = FALSE}
+library(pacman)
+p_load(tidyverse, ggrepel, foreign)
+p_load(magrittr, dplyr, ggplot2)
+p_load(skimr, naniar)
+```
+
+```{r Load Raw Data, include = FALSE}
+# You don't need to run this again. See file created below in "Collect My Data" section.
+wb.raw <- read.csv("data_raw/API_NE.TRD.GNFS.ZS_DS2_en_csv_v2_823240/API_NE.TRD.GNFS.ZS_DS2_en_csv_v2_823240.csv")
+```
+
+```{r Keeps, include =FALSE}
+drops = c("ï..Country.Name", "Country.Code", "Indicator.Code", "Indicator.Name", "X1960", "X1961", "X1962", "X1963",  "X1964", "X1965", "X1966", "X1967", "X1968", "X1969", "X2019")
+
+wb1  <- wb.raw[250, !(names(wb.raw) %in% drops)]
+
+wb1 %<>% pivot_longer(cols = everything())
+
+wb1$year = 1970:2018
+
+wb1 %<>% rename(trade.as.pct.usa.gdp = value)
+
+write.csv(wb1, file = "data_prepped/wb1.csv")
+#write.csv(xnames, file = "data_prepped/gss1_xnames.csv")
+```
+
+## Plotting USA Trade Openness Over Time
+```{r Plot, echo=FALSE}
+p_load(ggrepel)
+
+p.1 <- ggplot(wb1,
+              aes(x = year, y = trade.as.pct.usa.gdp)) +
+  geom_line()+
+  xlab("Year")+
+  ylab("USA Trade as % of GDP")+
+  ggtitle("USA Trade Openness Over Time - Data from World Bank")+ 
+  # geom_label_repel(aes(label = Model),
+  #                  box.padding   = 0.35, 
+  #                  point.padding = 0.5,
+  #                  segment.color = 'grey50') +
+  theme_classic()
+p.1
+```
+
