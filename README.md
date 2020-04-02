@@ -22,10 +22,17 @@ Can I figure out a simple way to get this sentiment data in a processable form? 
 
 ## Literature
 
+The role of sentiment in politics and more generally in situations where plenty of data is available to thoroughly refute our beliefs.
 
-## Method (plan)
-Develop linear regression, logistic regression, and penalized regression models to evaluate relationships.
+Consensus that levels of trade liberalization and immigration do not influence US crime rates.
+
+## Changes over time
+looking at:
+
+murders per capita (in county-year)
+
+mean and median on sentiment data in county-year
 
 
 ## Output
-15-page paper due 3/20/20
+15-page paper
